@@ -49,6 +49,7 @@ ENV DT_LAUNCHER "${LAUNCHER}"
 
 # install apt dependencies
 COPY ./dependencies-apt.txt "${REPO_PATH}/"
+COPY ./image_demo.jpg "${REPO_PATH}/"
 RUN dt-apt-install ${REPO_PATH}/dependencies-apt.txt
 
 # install python3 dependencies
