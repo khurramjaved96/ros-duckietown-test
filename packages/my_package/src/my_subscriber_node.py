@@ -13,9 +13,10 @@ class MySubscriberNode(DTROS):
         # initialize the DTROS parent class
         super(MySubscriberNode, self).__init__(node_name=node_name, node_type=NodeType.GENERIC)
         # construct publisher
-        self.sub_image = rospy.Subscriber('/output/image_raw/compressed', CompressedImage, self.callback)
+        self.sub_image = rospy.Subscriber('/csc22938/camera_node/image/compressed', CompressedImage, self.callback)
 
     def callback(self, data):
+        print("Message received")
         np_arr = np.fromstring(data.data, np.uint8)
         img = cv2.imdecode(np_arr, 1)
         hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
